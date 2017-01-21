@@ -1,17 +1,25 @@
 package edu.tacoma.uw.apanlili;
 
+import android.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
 
+import edu.tacoma.uw.apanlili.course.AboutFragment;
 import edu.tacoma.uw.apanlili.course.CourseContent;
+
+import static android.R.attr.fragment;
 
 public class CourseActivity extends AppCompatActivity implements CourseFragment.OnListFragmentInteractionListener {
 
@@ -26,7 +34,33 @@ public class CourseActivity extends AppCompatActivity implements CourseFragment.
                     .add(R.id.fragment_container, new CourseFragment())
                     .commit();
         }
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.about:
+                FragmentManager fm = getSupportFragmentManager();
+                AboutFragment fragment = new AboutFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
     @Override
     public void onListFragmentInteraction(CourseContent.CourseItem item) {

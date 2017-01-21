@@ -1,5 +1,6 @@
 package edu.tacoma.uw.apanlili.course;
 
+import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.widget.TextView;
 
@@ -69,6 +70,10 @@ public class CourseContent extends ListFragment {
 
     }
 
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.popBackStack(fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-2).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
 
     /**
      * A dummy item representing a piece of content.
