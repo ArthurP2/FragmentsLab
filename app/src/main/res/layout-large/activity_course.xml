@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <fragment
+        android:name = "edu.tacoma.uw.apanlili.CourseFragment"
+        android:id="@+id/course_frag"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:id="@+id/course_frag"
-        android:name="edu.tacoma.uw.apanlili.CourseFragment" />
-
+        tools:layout="@layout/fragment_course_list"/>
     <fragment
+        android:name = "edu.tacoma.uw.apanlili.CourseDetailFragment"
+        android:id="@+id/course_item_frag"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="match_parent"
-        android:id="@+id/course_item_frag"
-        android:name="edu.tacoma.uw.apanlili.CourseDetailFragment"  />
+        tools:layout="@layout/fragment_course_list"/>
 </LinearLayout>

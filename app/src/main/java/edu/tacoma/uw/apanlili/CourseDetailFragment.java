@@ -20,14 +20,12 @@ import static edu.tacoma.uw.apanlili.course.CourseContent.DETAIL_PARAM;
  * create an instance of this fragment.
  */
 public class CourseDetailFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
+
+    public static final String DETAIL_PARAM = "detail_param";
     private CourseContent.CourseItem mCourseItem;
-    private String mParam2;
+
 
 
     public CourseDetailFragment() {
@@ -74,6 +72,9 @@ public class CourseDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_course_detail, container, false);
+        if (mCourseItem == null) {
+            mCourseItem = CourseContent.ITEMS.get(0);
+        }
         TextView courseIdTextView = (TextView) v.findViewById(R.id.course_item_id);
         courseIdTextView.setText(mCourseItem.id);
         TextView courseTitleTextView = (TextView) v.findViewById(R.id.course_item_title);
@@ -86,15 +87,6 @@ public class CourseDetailFragment extends Fragment {
     }
 
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
 
 }
