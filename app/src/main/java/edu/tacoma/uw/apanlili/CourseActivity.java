@@ -1,25 +1,16 @@
 package edu.tacoma.uw.apanlili;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import java.util.List;
-
-import edu.tacoma.uw.apanlili.course.AboutFragment;
 import edu.tacoma.uw.apanlili.course.CourseContent;
-
-import static android.R.attr.fragment;
 
 public class CourseActivity extends AppCompatActivity implements CourseFragment.OnListFragmentInteractionListener {
 
@@ -45,20 +36,26 @@ public class CourseActivity extends AppCompatActivity implements CourseFragment.
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.about:
-                FragmentManager fm = getSupportFragmentManager();
-                AboutFragment fragment = new AboutFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        CourseDetailFragment courseDetailFragment = (CourseDetailFragment)
+                getSupportFragmentManager().findFragmentById(R.id.course_item_frag);
+
+        if (courseDetailFragment != null) {
+            Intent intent = new Intent(CourseActivity.this, AboutActivity.class);
+            startActivity(intent);
         }
+        else {
+            AboutFragment fragment = new AboutFragment();
+            fragment = fragment.getAboutFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
+
+
 
 
 

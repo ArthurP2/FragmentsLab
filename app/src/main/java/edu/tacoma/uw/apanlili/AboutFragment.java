@@ -1,27 +1,20 @@
-package edu.tacoma.uw.apanlili.course;
+package edu.tacoma.uw.apanlili;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import edu.tacoma.uw.apanlili.CourseFragment;
-import edu.tacoma.uw.apanlili.R;
-
-import static android.provider.CalendarContract.CalendarCache.URI;
+import edu.tacoma.uw.apanlili.course.CourseContent;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link AboutFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AboutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AboutFragment extends Fragment{
@@ -29,8 +22,7 @@ public class AboutFragment extends Fragment{
     TextView txt;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
 
 
 
@@ -44,16 +36,12 @@ public class AboutFragment extends Fragment{
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment AboutFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AboutFragment newInstance(String param1, String param2) {
+    public static AboutFragment getAboutFragment() {
         AboutFragment fragment = new AboutFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,7 +55,7 @@ public class AboutFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         String str = getString(R.string.aboutText);
-        View v = inflater.inflate(R.layout.fragment_about, container, false);
+        View v = inflater.inflate(R.layout.fragment_about, null);
         txt = (TextView) v.findViewById(R.id.aboutText);
         setText(str);
         return v;
@@ -76,13 +64,6 @@ public class AboutFragment extends Fragment{
         txt.setText(text);
     }
 
-
-
-
-    public void onBackPressed() {
-        FragmentManager fragmentManager = getChildFragmentManager();
-        fragmentManager.popBackStack(fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-2).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-    }
 
 
 
