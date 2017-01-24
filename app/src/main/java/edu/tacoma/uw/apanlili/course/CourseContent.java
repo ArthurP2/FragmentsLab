@@ -89,8 +89,8 @@ public class CourseContent extends ListFragment {
             this.id = id;
             this.content = content;
             this.details = details;
-            this.title = "title";
-            this.shortDesc = "shortDesc";
+            this.title = (String)("item " + id);
+            this.shortDesc = (String)("This is the description for item number " + id);
         }
 
         @Override
